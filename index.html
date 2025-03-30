@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinkapple report app </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url('TZ.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        header {
+            background-color: #fff;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: #666;
+            letter-spacing: 1px;
+        }
+        
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 2rem;
+            gap: 2rem;
+            perspective: 1000px;
+        }
+        
+        .product {
+            background-color: white;
+            width: 200px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            transition: transform 0.5s ease;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        
+        .product:hover {
+            transform: rotateY(15deg);
+        }
+        
+        .product-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .product-description {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #fff;
+            margin-top: auto;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .products-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .product {
+                width: 90%;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Rotation animation for demonstration */
+        @keyframes rotateDemo {
+            0% { transform: rotateY(0); }
+            50% { transform: rotateY(180deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        
+        .demo-rotate {
+            animation: rotateDemo 8s infinite linear;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pinkapple reports app</h1>
+        <p class="subtitle">Fast and smart way to get office reports now</p>
+    </header>
+    <main>
+        <h2 style="text-align: center; margin-top: 2rem; text-transform: uppercase;">STEPS TO FOLLOW</h2>
+        
+        <div class="products-container">
+            <div class="product demo-rotate">
+                <img src="r2.jpg" alt="Worktop Image" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
+                <h3 class="product-name">Welcome to Pinkapple report</h3>
+                <p class="product-description"></p>
+            </div>
+
+            <div class="products-container">
+                <div class="product demo-rotate">
+                    <img src="r1.jpg" alt="Worktop Image" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
+                    <h3 class="product-name">step 1</h3>
+                    <p class="product-description">provide the number that was submitted to the system admin</p>
+                </div>
+            
+            <div class="product">
+                <img src="rp3.jpg" alt="Couch Capsule Image" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
+                <h3 class="product-name">step 2</h3>
+                <p class="product-description">Welcome page</p>
+            </div>
+            
+            <div class="product">
+                <img src="T1.jpg" alt="Couch Cake Image" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
+                <h3 class="product-name">step 3</h3>
+                <p class="product-description">individual performance</p>
+            </div>
+
+            <div class="product">
+                <img src="T2.jpg" alt="Couch Cake Image" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
+                <h3 class="product-name">Over view</h6>
+                <p class="product-description">NO.of activeloans<br>No.of customers paid<br>totalcollections<br>etc.</p>
+                </p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2025 Pinkapple. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Add rotation on click for all products
+        document.querySelectorAll('.product').forEach(product => {
+            product.addEventListener('click', function() {
+                this.style.transform = 'rotateY(180deg)';
+                setTimeout(() => {
+                    this.style.transform = 'rotateY(0)';
+                }, 1000);
+            });
+        });
+        
+        // Responsive rotation adjustment
+        function adjustRotation() {
+            const products = document.querySelectorAll('.product:not(.demo-rotate)');
+            if (window.innerWidth < 768) {
+                products.forEach(product => {
+                    product.style.transform = 'rotateX(10deg)';
+                });
+            } else {
+                products.forEach(product => {
+                    product.style.transform = 'rotateY(10deg)';
+                });
+            }
+        }
+        
+        window.addEventListener('resize', adjustRotation);
+        window.addEventListener('load', adjustRotation);
+    </script>
+</body>
+</html>
